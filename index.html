@@ -1,0 +1,73 @@
+<html>
+    <body>
+
+        <div >
+            <img style="height:auto;width:500px;border-radius:500px;box-shadow:5px 10px #dddddd;" id="animation" src="C:\Users\dell\Desktop\handAnimation\1.png" onmouseover="hover()" onmouseout="outside()">
+        </div>
+
+        <script>
+            currentFrame=1;
+            frameLoc=".\\handAnimation";
+            anim=document.getElementById("animation");
+            hovering=false;
+            // console.log(frameLoc);
+            function hover()
+            {hovering=true;
+                window.requestAnimationFrame(rise);
+            }
+            function outside()
+            {
+                hovering=false;
+               
+               window.requestAnimationFrame(fall);
+            }
+
+            
+            function fall()
+            {
+            
+            anim.src=frameLoc+"\\"+ currentFrame.toString()+".png";
+            console.log(anim.src);
+           
+                if(currentFrame<30&&!hovering)
+                {setTimeout(() => {
+                    currentFrame++;
+                    requestAnimationFrame(fall);
+               
+                }, 1000 /24);
+                   
+                }
+                else
+                {return;
+
+                }
+  
+          return;
+               
+            }
+            function rise()
+            {
+                
+            anim.src=frameLoc+"\\"+ currentFrame.toString()+".png";
+            console.log(anim.src);
+            
+                if(currentFrame>1&&hovering)
+                {setTimeout(() => {
+                    currentFrame--;
+                    requestAnimationFrame(rise);
+               
+                }, 1000 /24);
+                }
+                else
+                {
+                   return;
+                } 
+                return;
+               
+            }
+            window.requestAnimationFrame(fall);
+
+        </script>
+    </body>
+
+</html>
